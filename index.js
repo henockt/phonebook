@@ -1,9 +1,8 @@
 const express = require('express')
 const morgan = require('morgan')
-const cors = require('cors')
 
 const app = express()
-app.use(cors())
+app.use(express.static('dist'))
 app.use(express.json())
 
 // logging
@@ -55,10 +54,6 @@ app.get('/api/persons/:id', (request, response) => {
         response.json(person)
     }
 })
-
-const generateId = () => {
-    return Math.random()
-}
 
 app.post('/api/persons', (request, response) => {
     const body = request.body
